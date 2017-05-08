@@ -24,22 +24,23 @@ var cards = [
 var cardsInPlay = [];
 
 var checkForMatch = function() {
-  this.setAttribute('src', cards[cardId].cardImage);
-  if (cardsInPlay.length === 2 && cardsInPlay[0] === cardsInPlay[1]) {
+  if (cardsInPlay[0] === cardsInPlay[1]) {
     alert("You found a match!");
   } else {
     alert("Sorry, try again.");
   }
-}
 };
 
 var flipCard = function () {
-  var cardId = this.getAttribute(data-id);
+  var cardId = this.getAttribute('data-id');  
+  this.setAttribute('src', cards[cardId].cardImage);
+  if (cardsInPlay.length === 2) {  
   console.log("User flipped " + cards[cardId].rank);
   cardsInPlay.push(cards[cardId].rank);
   console.log(cards[cardId].cardImage);
   console.log(cards[cardId].suit);
   checkForMatch();
+  }
 };
 
 var createBoard = function () {
